@@ -1,1 +1,1 @@
-export default  URL ='mongodb+srv://ag***:<password>@healthvault.lrbhkc7.mongodb.net/HealthVaultdb?retryWrites=true&w=majority';
+export default  URL ='mongodb+srv://---:***@healthvault.lrbhkc7.mongodb.net/HealthVaultdb?retryWrites=true&w=majority';
