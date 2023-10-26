@@ -5,6 +5,9 @@ import orgRoutes from './routes/organisation-routes.js';
 import imgRoutes from './routes/image-routes.js';
 import verifyRoutes from './routes/varify-toke.js';
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 const app=express();
 
 app.use(cors());// cross orgin 
@@ -19,7 +22,7 @@ app.use((req,res,next)=>{
     res.json({message:'Invalid URL'});
 })
 
-const server=app.listen(1234,(err)=>{
+const server=app.listen(process.env.PORT||8000,(err)=>{
     if(err){
         console.log('server crash',err);
     }

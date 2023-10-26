@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
-import URL from './models/variable.js'
-const promise=mongoose.connect(URL);
+
+
+import dotenv from 'dotenv'
+dotenv.config()
+
+const promise=mongoose.connect(process.env.DB_CONNECTION);
 promise.then(data=>{
     console.log('Db Connected . .');
 }).catch(err=>{
