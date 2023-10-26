@@ -56,7 +56,7 @@ export const orgController={
             }
         }
         catch(err){
-            console.log('Note Adding Err ', err);
+            // console.log('Note Adding Err ', err);
             res.json({message:'Problem in note adding'});
         }
     },
@@ -129,13 +129,9 @@ client
   .then((result) => {
     res.json(result);
     
-    console.log("RESULT")
-    console.log(result)
+  
   });
-  console.log("SYNMPTOMS")
-  console.log(req.body.symptoms)
-  console.log("DIAGNOSIS")
-  console.log(req.body.diagnosis)
+  
   
     }
 }
