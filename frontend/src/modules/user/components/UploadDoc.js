@@ -43,7 +43,7 @@ function UploadDoc({data}) {
   };
 
   const [enlargedImage, setEnlargedImage] = useState(null);
-
+  const [base64Image, setBase64Image]=useState();
   const openImage = (imageUrl) => {
     setEnlargedImage(imageUrl);
   };
@@ -57,28 +57,43 @@ function UploadDoc({data}) {
   },[])
   const[image,setImage]=useState()
   const[allImage,setAllimage]=useState(null)
-  const submit=async (e)=>{
-    
-
-    e.preventDefault(); // revent reloading
-
-    const formData=new FormData();
-    const d=new Date();
-    const todaysdate=d.toLocaleDateString();
-    
-    formData.append("image",image);
-    formData.set('userid',data.Mid);
-    formData.set('date',todaysdate);
-
-    const result=await axios.post(
-      process.env.REACT_APP_UPLOAD_IMAGE,
-      formData,
-      {
-        headers:{"content-type" :"multer/form-data"},
+  const submit = async (e) => {
+    e.preventDefault(); // Prevent reloading
+  
+    if (image) {
+      const base64String = await convertImageToBase64(image);
+      setBase64Image(base64String);
+  
+      
+      const d = new Date();
+      const todaysdate = d.toLocaleDateString();
+  
+      const formData={
+        image:base64String,
+        userid: data.Mid,
+        date:todaysdate
       }
-    );
-    getImage();
+
+  
+      try {
+        const result = await axios.post(process.env.REACT_APP_UPLOAD_IMAGE, formData);
+        getImage();
+      } catch (error) {
+        // Handle any errors that may occur during the POST request
+      }
+    }
   };
+  
+  const convertImageToBase64 = (imageFile) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        resolve(e.target.result);
+      };
+      reader.readAsDataURL(imageFile);
+    });
+  };
+  
   const onClick=(e)=>{
     
     setImage(e.target.files[0]);
@@ -97,8 +112,7 @@ function UploadDoc({data}) {
   if(allImage==null){
     return
   }
- 
-  const baseURL=process.env.REACT_APP_BASEURL;
+
   return (
     <>
     <div>
@@ -136,12 +150,12 @@ function UploadDoc({data}) {
                 </div>
               </a>
             ) : (
-              <div onClick={() => openImage(baseURL +item.image)}>
+              <div onClick={() => openImage(item.image)}>
                 <div className="image-info">
                   {/* <span>{item.name}</span> */}
                   {/* <span>name</span> */}
                 </div>
-                <img src={baseURL+ item.image}  />
+                <img src={ item.image}  />
                 <div className="image-info">
                 {uploadDate(item.date)}
                
