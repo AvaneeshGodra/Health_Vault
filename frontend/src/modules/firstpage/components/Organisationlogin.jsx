@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import { networkOperations } from '../../../shared/services/api-client.js';
 import MainPage from '../../organization/pages/MainPage';
 import logo from './Logo.jpg'
+import { useNavigate } from 'react-router-dom';
 import {
   MDBContainer,
   MDBTabs,
@@ -58,11 +59,11 @@ const Organisationlogin = () => {
       setMess('login fails');
     }
   }
+  const navigate = useNavigate();
   const logout=()=>{
       localStorage.setItem('flag','false');
       localStorage.removeItem('temp')
-      window. location. reload();
-      
+      navigate("/");
     
   }
 
