@@ -26,7 +26,7 @@ const Mediorg = ({orgdata , dat}) => {
         
   
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
     

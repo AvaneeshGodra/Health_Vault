@@ -48,7 +48,7 @@ const Userlogin = () => {
         setMid(response.data.data.Mid);
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -76,7 +76,7 @@ const Userlogin = () => {
         verifylogin();
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setMessage("login fails");
     }
   };

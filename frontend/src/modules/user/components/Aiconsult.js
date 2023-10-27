@@ -26,13 +26,13 @@ const SearchComponent = ({data}) => {
        
 
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   
     var print=arrNote.reduce((a,n)=>
       a+n.note
    ,'')
-   console.log(print);
+  //  console.log(print);
     
     const send={
       symptoms:symptomRef.current.value,
@@ -46,10 +46,10 @@ const SearchComponent = ({data}) => {
        
       
         setOutput(response.data[0].candidates[0].output);
-       console.log(response.data[0].candidates[0].output)
+      //  console.log(response.data[0].candidates[0].output)
 
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   
   }

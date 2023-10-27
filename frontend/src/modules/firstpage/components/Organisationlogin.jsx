@@ -55,7 +55,7 @@ const Organisationlogin = () => {
 
     }
     catch(err){
-      console.log(err);
+      // console.log(err);
       setMess('login fails');
     }
   }

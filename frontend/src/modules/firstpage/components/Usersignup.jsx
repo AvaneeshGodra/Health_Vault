@@ -44,7 +44,7 @@ const Userlogin = () => {
   const  Register=async()=>{
     
     const midd=func();
-    console.log(midd);
+    // console.log(midd);
     setMid(midd);
     
 
@@ -59,8 +59,8 @@ const Userlogin = () => {
       const response=await networkOperations.post(process.env.REACT_APP_REGISTER,userInfo);
       setMessage(response.data.message) // printing message registered 
       
-      console.log('response is ', response);
-      console.log('user info',userInfo);
+      // console.log('response is ', response);
+      // console.log('user info',userInfo);
       
     }
     catch(err){
